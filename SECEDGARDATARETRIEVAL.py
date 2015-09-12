@@ -116,26 +116,21 @@ for z in range(len(typeList)):
  
                         year =  docname1[11:13]
  
-                        if int(year) > 60:
-                            year = "19" + year
-                        else:
-                            year = "20" + year
-                        if int(year) >= 2009:
  
-                            txtdoc = URL2 + URL1
-                            URL1 = str(year) + "_"+ str(fi) + "_" + URL1
+                        txtdoc = URL2 + URL1
+                        URL1 = str(year) + "_"+ str(fi) + "_" + URL1
  
-                            base_url = txtdoc
+                        base_url = txtdoc
  
-                            r = requests.get(base_url)
-                            data = r.text
-                            if not os.path.exists("Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z]) +"/"+ fname ):
-                                os.makedirs(
-                                    "Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z]) + "/" + fname )
+                        r = requests.get(base_url)
+                        data = r.text
+                        if not os.path.exists("Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z]) +"/"+ fname ):
+                          os.makedirs(
+                                 "Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z]) + "/" + fname )
  
-                            if m!= -1:
+                          if m!= -1:
  
-                                if not os.path.exists("Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z]) +"/"+ fname + "/"+"html" ):
+                              if not os.path.exists("Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z]) +"/"+ fname + "/"+"html" ):
                                     os.makedirs(
                                         "Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z])+ "/" + fname +"/"+  "html" )
                                 path = "Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z]) +"/"+  fname + "/" +"html"+ "/"  + URL1
@@ -152,5 +147,5 @@ for z in range(len(typeList)):
                                         "Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z]) + "/" + fname +"/"+  "XML" )
                                 path = "Crawled Data/" + str(folder) + "/" + str(cikList[i]) + "/" + str(typeList[z]) +"/"+ fname + "/" +"XML"+ "/" + URL1
  
-                            filename = open(path, "a")
-                            filename.write(data.encode('ascii', 'ignore'))
+                        filename = open(path, "a")
+                        filename.write(data.encode('ascii', 'ignore'))
